@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+  <style type="text/css">
+    .carouselbox {
+      font-family: helvetica,sans-serif;
+      font-size: 14px;
+      width: 1092px;
+      position: relative;
+      margin: 1em;
+      overflow: hidden;
+    }
+    #fcategories {
+      margin: 0;
+      padding: 0;
+      width: 200%;
+      position: absolute;
+    }
+    #fcategories dd {
+      font-size: 100px;
+      margin: 0 2px;
+      padding: 0;
+      position: relative;
+      float: left;
+      list-style: none;
+      text-align: center;
+      z-index: 2;
+      transition:  all 777ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
+    }
+    .active {
+      height: 215px;
+    }
+    .carouselbox button {
+      border: none;
+      visibility: hidden;
+    }
+    .active button {
+      visibility: visible;
+    } 
+    .offscreen {
+      position: absolute;
+      left: -2000px;
+    }
+
+    .active .buttons {
+      padding: 5px 0;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+    .active dd {
+      position: relative;
+      display: inline-block;
+    }
+    .active dd.current {
+      opacity: 1;
+    }
+    .active dd.first {
+    }
+  
+  </style>
+</head>
+
+<body>
+<div class="carouselbox">
+  <div class="buttons">
+    <button class="prev">
+       ◀ <span class="offscreen"  >Previous</span>
+    </button>
+    <button class="next">
+      <span class="offscreen">Next</span> ▶ 
+    </button>
+  </div>
+  <dl class="box imglist" id="fcategories">
+      <dd class="first slide" id="fcat1"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
+      <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
+      <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd id="fcat4" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
+      <dd id="fcat9" class="slide"><a href="/road-bikes/c9"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg9.jpeg" alt="Road Bikes" title="Road Bikes"></span></a></dd>
+      <dd id="fcat10" class="slide"><a href="/mountain-bikes/c10"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg10.jpeg" alt="Mountain Bikes" title="Mountain Bikes"></span></a></dd>
+      <dd class="last slide" id="fcat14"><a href="/accessories/c14"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg14.jpeg" alt="Accessories" title="Accessories"></span></a></dd>
+  </dl>
+</div>
+
+
+
+
+
+<script>
+
+
+
+carousel = (function(){
+
+  // Read necessary elements from the DOM once
+  var box = document.querySelector('.carouselbox');
+  var next = box.querySelector('.next');
+  var prev = box.querySelector('.prev');
+  // Define the global counter, the items and the 
+  // current item 
+  var counter = 0;
+  var items = box.querySelectorAll('#fcategories dd');
+  var amount = items.length;
+  var current = items[0];
+  box.classList.add('active');
+  // navigate through the carousel
+  function navigate(direction) {
+    // hide the old current list item 
+    current.classList.remove('current');
+    // calculate the new position
+    counter = (counter + direction) % amount;
+    counter = counter < 0 ? amount - 1 : counter;
+    // set new current element 
+    // and add CSS class
+    current = items[counter];
+    current.classList.add('current');
+  }
+
+  
+
+  var slider = document.getElementById('fcategories');
+  // add event handlers to buttons
+  next.addEventListener('click', function(ev) {
+    navigate(1);
+    var firstSlide = document.getElementsByClassName("slide")[0];
+    var nextSlide = document.getElementsByClassName("slide")[0];
+    var slides = document.getElementsByTagName('dd');
+    setTimeout(function(){
+      firstSlide.setStyle({'margin-left': -280 + 'px'});
+      setTimeout(function(){
+        slider.appendChild(firstSlide);
+        slider.classList.remove("transition");
+        firstSlide.setStyle({'margin-left': 0 + 'px'});
+      },777);
+    }, 1);
+  });
+  prev.addEventListener('click', function(ev) {
+    navigate(-1);
+    var slides = document.getElementsByTagName('dd');
+    var lastSlide = slides[slides.length-1];
+    var nextSlide = document.getElementsByClassName("slide")[0];
+    setTimeout(function(){
+      slider.insertBefore(lastSlide, slider.firstChild); 
+      lastSlide.setStyle({'margin-left': -280 + 'px'});
+      setTimeout(function(){
+        
+        slider.classList.remove("transition");
+        lastSlide.setStyle({'margin-left': 0 + 'px'});
+      },100);
+    }, 1);
+  });
+
+  // show the first element 
+  // (when direction is 0 counter doesn't change)
+  navigate(0);
+
+})();
+
+
+
+  
+</script>
+</body>
+</html>
