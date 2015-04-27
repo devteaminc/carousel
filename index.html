@@ -29,7 +29,7 @@
       list-style: none;
       text-align: center;
       z-index: 2;
-      transition:  all 777ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
+      transition:  all 555ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
     }
     .active {
       height: 215px;
@@ -45,7 +45,6 @@
       position: absolute;
       left: -2000px;
     }
-
     .active .buttons {
       padding: 5px 0;
       text-align: center;
@@ -56,11 +55,7 @@
       position: relative;
       display: inline-block;
     }
-    .active dd.current {
-      opacity: 1;
-    }
-    .active dd.first {
-    }
+    
   
   </style>
 </head>
@@ -69,7 +64,7 @@
 <div class="carouselbox">
   <div class="buttons">
     <button class="prev">
-       ◀ <span class="offscreen"  >Previous</span>
+       ◀ <span class="offscreen">Previous</span>
     </button>
     <button class="next">
       <span class="offscreen">Next</span> ▶ 
@@ -85,84 +80,6 @@
       <dd class="last slide" id="fcat14"><a href="/accessories/c14"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg14.jpeg" alt="Accessories" title="Accessories"></span></a></dd>
   </dl>
 </div>
-
-
-
-
-
-<script>
-
-
-
-carousel = (function(){
-
-  // Read necessary elements from the DOM once
-  var box = document.querySelector('.carouselbox');
-  var next = box.querySelector('.next');
-  var prev = box.querySelector('.prev');
-  // Define the global counter, the items and the 
-  // current item 
-  var counter = 0;
-  var items = box.querySelectorAll('#fcategories dd');
-  var amount = items.length;
-  var current = items[0];
-  box.classList.add('active');
-  // navigate through the carousel
-  function navigate(direction) {
-    // hide the old current list item 
-    current.classList.remove('current');
-    // calculate the new position
-    counter = (counter + direction) % amount;
-    counter = counter < 0 ? amount - 1 : counter;
-    // set new current element 
-    // and add CSS class
-    current = items[counter];
-    current.classList.add('current');
-  }
-
-  
-
-  var slider = document.getElementById('fcategories');
-  // add event handlers to buttons
-  next.addEventListener('click', function(ev) {
-    navigate(1);
-    var firstSlide = document.getElementsByClassName("slide")[0];
-    var nextSlide = document.getElementsByClassName("slide")[0];
-    var slides = document.getElementsByTagName('dd');
-    setTimeout(function(){
-      firstSlide.setStyle({'margin-left': -280 + 'px'});
-      setTimeout(function(){
-        slider.appendChild(firstSlide);
-        slider.classList.remove("transition");
-        firstSlide.setStyle({'margin-left': 0 + 'px'});
-      },777);
-    }, 1);
-  });
-  prev.addEventListener('click', function(ev) {
-    navigate(-1);
-    var slides = document.getElementsByTagName('dd');
-    var lastSlide = slides[slides.length-1];
-    var nextSlide = document.getElementsByClassName("slide")[0];
-    setTimeout(function(){
-      slider.insertBefore(lastSlide, slider.firstChild); 
-      lastSlide.setStyle({'margin-left': -280 + 'px'});
-      setTimeout(function(){
-        
-        slider.classList.remove("transition");
-        lastSlide.setStyle({'margin-left': 0 + 'px'});
-      },100);
-    }, 1);
-  });
-
-  // show the first element 
-  // (when direction is 0 counter doesn't change)
-  navigate(0);
-
-})();
-
-
-
-  
-</script>
+<script src="slider.js"></script>
 </body>
 </html>
