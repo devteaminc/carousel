@@ -1,3 +1,4 @@
+
 /*================================================================================================================
 // Carousel Script 
 /*================================================================================================================
@@ -9,11 +10,11 @@ var carousel = Class.create({
         this.options = {
             box           : 'containerClass',  
             slider        : 'carousel',
-            controls    : 'controlsClass',
+            controls      : 'controlsClass',
             skipnext      : 'next',
             skipprev      : 'prev',
             items         : 'dd',
-            timing        : 400,
+            timing        : 500,
         };
         this.internal = {
           // Define the global counter, the items and the current item 
@@ -27,10 +28,9 @@ var carousel = Class.create({
         Object.extend(this.options, options || {}); 
         this.internal.container = $$('.'+this.options.box)[0];
         this.internal.slider = $(this.options.slider);
-        this.internal.items = this.internal.container.select(this.options.items)
+        this.internal.items = this.internal.container.select(this.options.items);
         this.internal.currentItem = this.internal.items[0];
         this.internal.amount = this.internal.items.length;
-
         //Next/Prev Button click
         $$('.'+this.options.skipnext).each(function(elmnt){
             $(elmnt).observe('click', function(){ this.buttonAction(elmnt);}.bindAsEventListener(this));
@@ -40,7 +40,6 @@ var carousel = Class.create({
         }.bindAsEventListener(this));
     },
     buttonAction: function(e){
-        var timing = this.options.timing; 
         if($(e).hasClassName(this.options.skipnext)){
             this.navigate(1);
             this.animate(1);
@@ -69,42 +68,37 @@ var carousel = Class.create({
   animate: function(d){
     var timing = this.options.timing; 
     var slider = this.internal.slider;
-    var slides = $$('#fcategories dd');
+    var slides = this.internal.container.select(this.options.items);
     var firstSlide = slides[0];
     var slideWidth = firstSlide.getWidth();                                         //get first slides width to define animation offset
     var lastSlide = slides[slides.length-1]; 
     var lastSlideWidth = lastSlide.getWidth();                                    //get last slides width to define animation offset
     if(d > 0){                                                                   // if next is clicked animate slides this way
-     (function loop (i) {          
-       setTimeout(function () {   
-          if(i===2){ 
+      function offset(){                                                        // offset and slide and seperated in to functions to allow for a delay
             firstSlide.setStyle({'margin-left': -slideWidth + 'px'});          //offset second slide position to create animation 
-          }else{ 
+          }
+      function slide(){   
             slider.appendChild(firstSlide);                                  //append first slide to the last position
             firstSlide.setStyle({'margin-left': 0 + 'px'});                 //animate second slide to first position
-          }            
-          if (--i) loop(i);                                               //  decrement i and call myLoop again if i > 0
-       }.bind(this), timing/1.1)                                         // dividing timing smoothes the animation
-     })(2);                                                             //  pass the number of iterations as an argument
+          }
+          offset();
+          slide.delay(0.5);
     }else{                                                             // if prev is clicked animate slides this way
-     (function loop (i) {          
-       setTimeout(function () {   
-          if(i===2){ 
-             slider.insertBefore(lastSlide, firstSlide);                //prepend last slide to first position
-             lastSlide.setStyle({'margin-left': -lastSlideWidth + 'px'});     //offset last slide to create animation 
-          }else{ 
-            lastSlide.setStyle({'margin-left': 0 + 'px'});                  //animate last slide in to first position
-          }            
-          if (--i) loop(i);                                               //  decrement i and call myLoop again if i > 0
-       }.bind(this), timing/8)                                           // dividing timing smoothes the animation
-     })(2);                                                             //  pass the number of iterations as an argument
-   }
+     function offsetPrev(){
+           slider.insertBefore(lastSlide, firstSlide);                //prepend last slide to first position
+           lastSlide.setStyle({'margin-left': -lastSlideWidth + 'px'});     //offset last slide to create animation 
+         }
+     function slidePrev(){   
+           lastSlide.setStyle({'margin-left': 0 + 'px'});                  //animate last slide in to first position
+         }
+         offsetPrev();
+         slidePrev.delay(0.25);               //halving delay time makes previous slide animate at similar speed to next
+    }
   }
 });
 if ( $('fcategories') ) {
   $('fcategories').wrap('div', {'class': 'carouselbox active' });
     // Insert controls
-  $('fcategories').insert({before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
  var fcategories = new carousel({
       box       : 'carouselbox',
       slider    : 'fcategories',
@@ -112,6 +106,6 @@ if ( $('fcategories') ) {
       skipnext  : 'next',
       skipprev  : 'prev',
       items     : 'dd',
-      timing    :  400
+      timing    :  500
   });
 }
