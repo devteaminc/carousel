@@ -5,7 +5,7 @@
 /* ---------------------- Carousel Class v0.1 by Alan Sutherland ---------------------------------- */
 var carousel = Class.create({
     initialize: function(options) {
-        // define the options users can update when creating a new carousel
+        // Define the options users can update when creating a new carousel
         this.options = {
             box           : 'containerClass',  
             slider        : 'carousel',
@@ -13,7 +13,7 @@ var carousel = Class.create({
             skipnext      : 'next',
             skipprev      : 'prev',
             items         : 'dd',
-            timing        : 500,
+            timing        : 0.5,
         };
         this.internal = {
           // Define the global counter, the items and the current item 
@@ -56,7 +56,7 @@ var carousel = Class.create({
         }.bindAsEventListener(this));
     },
     buttonAction: function(e){
-        // if next button is clicked
+            // if next button is clicked
         if($(e).hasClassName(this.options.skipnext)){
             // move current class forwards to next slide
             this.navigate(1);
@@ -72,17 +72,15 @@ var carousel = Class.create({
     navigate: function(direction) {
     // remove current class from old slide
     this.internal.currentItem.removeClassName('current');
-    // calculate the new position
+    // check if direction equals + 1 or -1
     this.internal.counter = this.internal.counter + direction;
-    // clicked previous
-    if (direction === -1 && 
-        this.internal.counter < 0) { 
+    // if previous is clicked direction equals -1
+    if (direction === -1 && this.internal.counter < 0) { 
       this.internal.counter = this.internal.amount - 1; 
     }
-    // clicked next
-    if (direction === 1 && 
-        !this.internal.items[this.internal.counter]) { 
-      // reset counter
+    // if next is clicked durection equals + 1
+    if (direction === 1 && !this.internal.items[this.internal.counter]) { 
+      // reset the counter
       this.internal.counter = 0;
     }
     // set new current slide and add class
@@ -109,13 +107,13 @@ var carousel = Class.create({
           // offset new first slide by the width of the previous first slide, the 'next' string directs the function to select the first slide                                                
           this.offset(this.internal.firstSlide, "next");
           // append the old last slide to last position and slide in the new first slide, delaying this function creates the animation effect
-          this.slide.bind(this, this.internal.firstSlide, "next").delay(0.5);
+          this.slide.bind(this, this.internal.firstSlide, "next").delay(timing);
     }else{  
          // if prev is clicked animate slides this way  
          // prepend last slide in to first position, animate slides based on width of this slide                                                        
          this.offset(this.internal.lastSlide, "prev");
          // halving delay time makes previous slide animate at similar speed to next
-         this.slide.bind(this, this.internal.lastSlide, "prev").delay(0.25);    
+         this.slide.bind(this, this.internal.lastSlide, "prev").delay(timing);    
     }
   },
   // offset takes two arguments one to define the target element and another to check which button has been clicked
@@ -151,6 +149,6 @@ if ( $('fcategories') ) {
       skipnext  : 'next',
       skipprev  : 'prev',
       items     : 'dd',
-      timing    :  500
+      timing    :  0.5
   });
 }
