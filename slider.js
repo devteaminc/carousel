@@ -67,6 +67,9 @@ var carousel = Class.create({
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
            this.internal.container.setStyle({'width': this.options.vertWidth + 'px', 'height': this.options.vertHeight + 'px'});
+           this.internal.slider.childElements().each(function(e){ e.setStyle({'width': '100%'}); });
+           $(this.options.controls).childElements()[0].addClassName('rewind-vert');
+           $(this.options.controls).childElements()[1].addClassName('forward-vert');
         }
         //Next/Prev Button click listeners
         $$('.'+this.options.skipnext).each(function(elmnt){
@@ -227,6 +230,6 @@ if ( $('fcategories') ) {
       timing    :  0.5,
       vertical  : true,
       vertWidth : 285,
-      vertHeight: 875
+      vertHeight: 850
   });
 }
