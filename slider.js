@@ -61,8 +61,8 @@ var carousel = Class.create({
         // Touchswipe looking for initial touch and drags, fires two separate functions 
         this.internal.xDown = null;
         this.internal.yDown = null;
-        document.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
-        document.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);   
+        this.internal.container.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
+        this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);   
         // If Vertical is set change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
