@@ -12,7 +12,9 @@ var carousel = Class.create({
           skipprev      : 'prev',
           items         : 'dd',
           timing        : 0.5,
-          vertical      : false
+          vertical      : false,
+          vertWidth     : 300,
+          vertHeight    : 800
         };
         // Define the global counter, the items and the current item
         this.internal = { 
@@ -60,13 +62,20 @@ var carousel = Class.create({
         this.internal.xDown = null;
         this.internal.yDown = null;
         document.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
-        document.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);                             
+        document.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);   
+        // If Vertical is set change container style
+        if(this.internal.vertical === true){
+           this.internal.slider.setStyle({'width': '100%'});
+           this.internal.container.setStyle({'width': this.options.vertWidth + 'px', 'height': this.options.vertHeight + 'px'});
+        }
         //Next/Prev Button click listeners
         $$('.'+this.options.skipnext).each(function(elmnt){
-            $(elmnt).observe('click', function(){ this.buttonAction(elmnt);}.bindAsEventListener(this));
+            $(elmnt).observe('click', function(){ 
+              this.buttonAction(elmnt);}.bindAsEventListener(this));
         }.bindAsEventListener(this));
         $$('.'+this.options.skipprev).each(function(elmnt){
-            $(elmnt).observe('click', function(){ this.buttonAction(elmnt);}.bindAsEventListener(this));
+            $(elmnt).observe('click', function(){ 
+              this.buttonAction(elmnt);}.bindAsEventListener(this));
         }.bindAsEventListener(this));
     },
     buttonAction: function(e){
@@ -160,7 +169,7 @@ var carousel = Class.create({
     // if next is clicked animate slides this way                                  
     if(direction === 'next'){  
           // the offset is neccessary to create the animation effect
-          // offset new first slide by the width of the old first slide, the 'next' string directs the function to select the first slide                                                
+          // offset new first slide by the width of the old first slide, 'next' directs the function to select the first slide                                               
           this.offset(this.internal.firstSlide, "next");
           // append the old last slide to last position and slide in the new first slide, delaying this function creates the animation effect
           this.slide.bind(this, this.internal.firstSlide, "next").delay(timing);
@@ -207,7 +216,6 @@ var carousel = Class.create({
   }
 });
 if ( $('fcategories') ) {
-  $('fcategories').wrap('div', {'class': 'carouselbox active' });
   // create new carousel based on prototype
   var fcategories = new carousel({
       box       : 'carouselbox',
@@ -217,6 +225,8 @@ if ( $('fcategories') ) {
       skipprev  : 'prev',
       items     : 'dd',
       timing    :  0.5,
-      vertical  : true
+      vertical  : true,
+      vertWidth : 285,
+      vertHeight: 875
   });
 }
