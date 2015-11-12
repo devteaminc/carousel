@@ -1,23 +1,24 @@
 /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 <><><><><><><><><><><><><> Carousel Class v0.1 by Alan Sutherland <><><><><><><><><><><><><><><><><>
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+
 var carousel = Class.create({
     initialize: function(options) {
         // Define the options users can update when creating a new carousel
         this.options = {
-          box           : 'containerClass',  
-          slider        : 'carousel',
-          controls      : 'controlsClass',
-          skipnext      : 'next',
-          skipprev      : 'prev',
-          items         : 'dd',
-          timing        : 0.5,
-          vertical      : false,
-          vertWidth     : 300,
-          vertHeight    : 800
+          box             : 'containerClass',  
+          slider          : 'carousel',
+          controls        : 'controlsClass',
+          skipnext        : 'next',
+          skipprev        : 'prev',
+          items           : 'dd',
+          timing          : 0.5,
+          vertical        : false,
+          vertWidth       : 300,
+          vertHeight      : 800
         };
-        // Define the global counter, the items and the current item
-        this.internal = { 
+        this.internal = {
+        // Define the global counter, the items and the current item 
           counter         : 0,
           items           : '',
           currentItem     : '',
@@ -51,27 +52,29 @@ var carousel = Class.create({
         this.internal.slideWidth = this.internal.firstSlide.getWidth();  
         // locate last slide                    
         this.internal.lastSlide = this.internal.container.select(this.options.items+':last')[0]; 
-        //get last slides width to define animation offset
-        this.internal.lastSlideWidth = this.internal.lastSlide.getWidth();   
+        // get last slides width to define animation offset
+        this.internal.lastSlideWidth = this.internal.lastSlide.getWidth(); 
         // Check if slider should be displayed vertically (horizontal by default)
         this.internal.vertical = this.options.vertical;   
         // Get height of first and last slides  
         this.internal.slideHeight =  this.internal.firstSlide.getHeight();  
-        this.internal.lastSlideHeight =  this.internal.lastSlide.getHeight();                
+        this.internal.lastSlideHeight =  this.internal.lastSlide.getHeight(); 
         // Touchswipe looking for initial touch and drags, fires two separate functions 
         this.internal.xDown = null;
         this.internal.yDown = null;
         this.internal.container.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
-        this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);   
-        // If Vertical is set change container style
+        this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);    
+        // If Vertical is set, change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
            this.internal.container.setStyle({'width': this.options.vertWidth + 'px', 'height': this.options.vertHeight + 'px'});
-           this.internal.slider.childElements().each(function(e){ e.setStyle({'width': '100%'}); });
+           this.internal.slider.childElements().each(function(e){
+            e.setStyle({'width': '100%'});
+          });
            $(this.options.controls).childElements()[0].addClassName('rewind-vert');
            $(this.options.controls).childElements()[1].addClassName('forward-vert');
-        }
-        //Next/Prev Button click listeners
+        }                         
+        // Next/Prev Button click listeners
         $$('.'+this.options.skipnext).each(function(elmnt){
             $(elmnt).observe('click', function(){ 
               this.buttonAction(elmnt);}.bindAsEventListener(this));
@@ -107,27 +110,23 @@ var carousel = Class.create({
         var yUp = evt.touches[0].clientY;
         var xDiff = this.internal.xDown - xUp;
         var yDiff = this.internal.yDown - yUp;
-        if ( Math.abs( xDiff ) > Math.abs( yDiff ) && this.internal.vertical === false) {/*most significant*/
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) && this.internal.vertical === false ) {/*most significant*/
             if ( xDiff > 0 ) {
                 /* left swipe */ 
-                console.log('left swipe');
                 this.navigate(1);
                 this.animate('next');
             } else {
                 /* right swipe */
-                console.log('right swipe');
                 this.navigate(-1);
                 this.animate('prev');
             }                       
         } else {
             if ( yDiff > 0 ) {
                 /* up swipe */ 
-                console.log('up swipe');
                 this.navigate(1);
                 this.animate('next');
             } else { 
                 /* down swipe */
-                console.log('down swipe');
                 this.navigate(-1);
                 this.animate('prev');
             }                                                                 
@@ -175,13 +174,13 @@ var carousel = Class.create({
           // offset new first slide by the width of the old first slide, 'next' directs the function to select the first slide                                               
           this.offset(this.internal.firstSlide, "next");
           // append the old last slide to last position and slide in the new first slide, delaying this function creates the animation effect
-          this.slide.bind(this, this.internal.firstSlide, "next").delay(timing);
+          this.slide.bind(this, this.internal.firstSlide, "next").delay(0.5);
     }else{  
          // if prev is clicked animate slides this way  
          // prepend last slide in to first position, animate slides based on width of this slide                                                        
          this.offset(this.internal.lastSlide, "prev");
          // halving delay time makes previous slide animate at similar speed to next
-         this.slide.bind(this, this.internal.lastSlide, "prev").delay(timing/300);    
+         this.slide.bind(this, this.internal.lastSlide, "prev").delay(0.1);
     }
   },
   // offset takes two arguments one to define the target element and another to check which button has been clicked
@@ -205,6 +204,7 @@ var carousel = Class.create({
   },
   // slide takes two arguments one to define the target element and another to check which button has been clicked
   slide: function(elm, dir){   
+
     // if next has been clicked append the old first slide to the end of the slides
     if(dir === 'next'){
         //append first slide to the last position
@@ -215,21 +215,23 @@ var carousel = Class.create({
       elm.setStyle({'margin-left': 0 + 'px'});   
     } else {
       elm.setStyle({'margin-top': 0 + 'px'});
-    }                       
+    }                  
   }
 });
 if ( $('fcategories') ) {
-  // create new carousel based on prototype
-  var fcategories = new carousel({
+  $('fcategories').wrap('div', {'class': 'carouselbox active' });
+  // create new carousel based on prototype class
+ var fcategories = new carousel({
       box       : 'carouselbox',
       slider    : 'fcategories',
       controls  : 'catscontrols',
       skipnext  : 'next',
       skipprev  : 'prev',
       items     : 'dd',
-      timing    :  0.5,
-      vertical  : true,
-      vertWidth : 285,
-      vertHeight: 850
+      timing    : 1
+      // vertical  : true,
+      // vertWidth : 285,
+      // vertHeight: 875
   });
 }
+
