@@ -12,7 +12,7 @@ var carousel = Class.create({
           skipnext        : 'next',
           skipprev        : 'prev',
           items           : 'dd',
-          timing          : 0.5,
+          timing          : 1,
           vertical        : false,
           vertWidth       : 300,
           vertHeight      : 800
@@ -218,20 +218,4 @@ var carousel = Class.create({
     }                  
   }
 });
-if ( $('fcategories') ) {
-  $('fcategories').wrap('div', {'class': 'carouselbox active' });
-  // create new carousel based on prototype class
- var fcategories = new carousel({
-      box       : 'carouselbox',
-      slider    : 'fcategories',
-      controls  : 'catscontrols',
-      skipnext  : 'next',
-      skipprev  : 'prev',
-      items     : 'dd',
-      timing    : 1
-      // vertical  : true,
-      // vertWidth : 285,
-      // vertHeight: 875
-  });
-}
 
