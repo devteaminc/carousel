@@ -1,9 +1,9 @@
 
 ```
-                / __\__ _ _ __ ___  _   _ ___  ___| |
-               / /  / _` | '__/ _ \| | | / __|/ _ \ |
-              / /__| (_| | | | (_) | |_| \__ \  __/ |
-              \____/\__,_|_|  \___/ \__,_|___/\___|_|
+                                  / __\__ _ _ __ ___  _   _ ___  ___| |
+                                 / /  / _` | '__/ _ \| | | / __|/ _ \ |
+                                / /__| (_| | | | (_) | |_| \__ \  __/ |
+                                \____/\__,_|_|  \___/ \__,_|___/\___|_|
 ```
 An image Carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js. Works best with images of equal width and height.
 
