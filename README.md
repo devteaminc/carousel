@@ -9,18 +9,18 @@ A simple image Carousel slider built using Prototype.js and CSS Animations
 
 ##Options
 
-| Option 		  | Default 			| Description													  |
-|----------------------------------------------------------------------------------------------------------
-| box             | 'containerClass'  	| The class of the Carousel container 							  |
-| slider          | 'carousel',			| The class of the carousel 									  |
-| controls        | 'controlsClass'		| The class of the controls container 							  |
-| skipnext        | 'next'				| The class of the next button 									  |
-| skipprev        | 'prev'				| The class of the previous button 								  |
-| items           | 'dd'				| The element slides are wrapped in 							  |
-| timing          | 1					| Timing for transitions (anything below 1 second can be buggy)   |
-| vertical        | false				| If set to true this will change the layout to vertical		  |
-| vertWidth       | 300					| Set the width of the vertical container 						  |
-| vertHeight      | 800					| Set the height of the vertical container 						  |
+| Option          | Default           | Description                                                          |
+|-----------------|-------------------|----------------------------------------------------------------------|
+| box             | 'containerClass'  | The class of the Carousel container                                  |
+| slider          | 'carousel',       | The class of the carousel                                            |
+| controls        | 'controlsClass'   | The class of the controls container                                  |
+| skipnext        | 'next'            | The class of the next button                                         |
+| skipprev        | 'prev'            | The class of the previous button                                     |
+| items           | 'dd'              | The element slides are wrapped in                                    |
+| timing          | 1                 | Timing for transitions (anything below 1 second can be buggy)        |
+| vertical        | false             | If set to true this will change the layout to vertical               |
+| vertWidth       | 300               | Set the width of the vertical container                              |
+| vertHeight      | 800               | Set the height of the vertical container                             |
 
 ###Example implementation
 
