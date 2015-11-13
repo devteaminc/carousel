@@ -10,7 +10,7 @@ A simple image Carousel slider built using Prototype.js and CSS Animations
 ##Options
 
 | Option          | Default           | Description                                                          |
-|:---------------:|:-----------------:|:--------------------------------------------------------------------:|
+|-----------------|-------------------|----------------------------------------------------------------------|
 | box             | 'containerClass'  | The class of the Carousel container                                  |
 | slider          | 'carousel'        | The class of the carousel                                            |
 | controls        | 'controlsClass'   | The class of the controls container                                  |
@@ -25,22 +25,22 @@ A simple image Carousel slider built using Prototype.js and CSS Animations
 ###Example implementation
 
 ```
-// Only invoke carousel if slider element exists
+if ( $('fcategories') ) {    // Only invoke carousel if slider element exists
+```		
+Insert carouselbox div and wrap slider container within it 
+Use this if you do not have access to the markup and need to add elements in using JS:
 
-if ( $('fcategories') ) {
-			
-  // Insert carouselbox div and wrap slider container within it 
-  // Use this if you do not have access to the markup and need to add elements in using JS:
-  
-     $('fcategories').wrap('div', {'class': 'carouselbox active' });
-  
-  // Insert controls 
-  // Use this if you do not have access to the markup and need to add elements in using JS:
- 
-     $('fcategories').insert(  {before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
-  
-  // The most important part, create the new carousel and set options
-  
+```
+  $('fcategories').wrap('div', {'class': 'carouselbox active' });
+```
+Insert controls 
+Use this if you do not have access to the markup and need to add elements in using JS:
+
+```
+  $('fcategories').insert({before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
+```
+  // The most important part, create the new carousel and set options:
+```  
  	var fcategories = new carousel({
       box       : 'carouselbox',
       slider    : 'fcategories',
@@ -48,8 +48,7 @@ if ( $('fcategories') ) {
       skipnext  : 'next',
       skipprev  : 'prev',
       items     : 'dd',
-      timing    : 1
-      
-  });
-}
+      timing    : 1 
+    });
+  }
 ```
