@@ -26,7 +26,7 @@ Demo: http://devteaminc.github.io/carousel/
 
 ##Example implementation
 
-```
+```javascript
 // Invoke carousel if slider element exists
 if ( $('fcategories') ) {    
     
