@@ -10,9 +10,9 @@ A simple image Carousel slider built using Prototype.js and CSS Animations
 ##Options
 
 | Option          | Default           | Description                                                          |
-|-----------------|-------------------|----------------------------------------------------------------------|
+|:---------------:|:-----------------:|:--------------------------------------------------------------------:|
 | box             | 'containerClass'  | The class of the Carousel container                                  |
-| slider          | 'carousel',       | The class of the carousel                                            |
+| slider          | 'carousel'        | The class of the carousel                                            |
 | controls        | 'controlsClass'   | The class of the controls container                                  |
 | skipnext        | 'next'            | The class of the next button                                         |
 | skipprev        | 'prev'            | The class of the previous button                                     |
@@ -29,13 +29,15 @@ A simple image Carousel slider built using Prototype.js and CSS Animations
 
 if ( $('fcategories') ) {
 			
-  // Insert carouselbox div and wrap slider container within it - use this if you do not have access to the markup and need to add elements in using JS:
+  // Insert carouselbox div and wrap slider container within it 
+  // Use this if you do not have access to the markup and need to add elements in using JS:
   
      $('fcategories').wrap('div', {'class': 'carouselbox active' });
   
-  // Insert controls - use this if you do not have access to the markup and need to add elements in using JS:
+  // Insert controls 
+  // Use this if you do not have access to the markup and need to add elements in using JS:
  
-  $('fcategories').insert(  {before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
+     $('fcategories').insert(  {before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
   
   // The most important part, create the new carousel and set options
   
