@@ -96,13 +96,9 @@ var carousel = Class.create({
     buttonAction: function(e){
             // if next button is clicked
         if($(e).hasClassName(this.options.skipnext)){
-            // move current class forwards to next slide
-            this.navigate(1);
             // animate slides forwards
             this.animate('next');
         }else{
-            // move current class backwards
-            this.navigate(-1);
             // animate slides backwards
             this.animate('prev');
         }  
@@ -122,21 +118,17 @@ var carousel = Class.create({
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) && this.internal.vertical === false ) {/*most significant*/
             if ( xDiff > 0 ) {
                 /* left swipe */ 
-                this.navigate(1);
                 this.animate('next');
             } else {
                 /* right swipe */
-                this.navigate(-1);
                 this.animate('prev');
             }                       
         } else {
             if ( yDiff > 0 ) {
                 /* up swipe */ 
-                this.navigate(1);
                 this.animate('next');
             } else { 
                 /* down swipe */
-                this.navigate(-1);
                 this.animate('prev');
             }                                                                 
         }
@@ -144,24 +136,6 @@ var carousel = Class.create({
         this.internal.xDown = null;
         this.internal.yDown = null;                                             
     },
-    navigate: function(direction) {
-    // remove current class from old slide
-    this.internal.currentItem.removeClassName('current');
-    // check if direction equals + 1 or -1
-    this.internal.counter = this.internal.counter + direction;
-    // if previous is clicked direction equals -1
-    if (direction === -1 && this.internal.counter < 0) { 
-      this.internal.counter = this.internal.amount - 1; 
-    }
-    // if next is clicked durection equals + 1
-    if (direction === 1 && !this.internal.items[this.internal.counter]) { 
-      // reset the counter
-      this.internal.counter = 0;
-    }
-    // set new current slide and add class
-    this.internal.currentItem = this.internal.items[this.internal.counter];
-    this.internal.currentItem.addClassName('current');
-  },
   animate: function(direction){
     // get timing 
     var timing = this.options.timing;
@@ -227,4 +201,3 @@ var carousel = Class.create({
     }                  
   }
 });
-
