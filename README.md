@@ -22,7 +22,7 @@ An image Carousel slider built using Prototype.js and CSS Animations. This plugi
 | vertWidth       | 300               | Set the width of the vertical container                              |
 | vertHeight      | 800               | Set the height of the vertical container                             |
 
-###Example implementation
+##Example implementation
 
 ```
 // Invoke carousel if slider element exists
@@ -47,4 +47,9 @@ if ( $('fcategories') ) {
       timing    : 1 
     });
   }
+```
+
+##Demo:
+```
+<iframe width="100%" height="300" src="//jsfiddle.net/rL3xc86L/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 ```
