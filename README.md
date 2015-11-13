@@ -7,9 +7,7 @@
 ```
 An image Carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js. 
 
-For a demo see: 
-
-http://devteaminc.github.io/carousel/
+Demo - http://devteaminc.github.io/carousel/
 
 ##Options
 
