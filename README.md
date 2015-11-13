@@ -50,6 +50,4 @@ if ( $('fcategories') ) {
 ```
 
 ##Demo:
-```
-https://jsfiddle.net/rL3xc86L/5/embedded/result/
-```
+(http://devteaminc.github.io/carousel/)
