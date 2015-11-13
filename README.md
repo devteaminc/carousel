@@ -51,5 +51,10 @@ if ( $('fcategories') ) {
   }
 ```
 
-##Demo:
+##Demos:
+
+Horizontal:
 http://devteaminc.github.io/carousel/
+
+Vertical:
+http://devteaminc.github.io/carousel/vertical.html
