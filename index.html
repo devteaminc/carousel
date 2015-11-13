@@ -1,1 +1,126 @@
-Demo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+  <style type="text/css">
+    .carouselbox {
+      font-family: helvetica,sans-serif;
+      font-size: 14px;
+      width: 1092px;
+      position: relative;
+      margin: 1em;
+      overflow: hidden;
+    }
+    #fcategories {
+      margin: 0;
+      padding: 0;
+      width: 200%;
+      position: absolute;
+    }
+    #fcategories dd {
+      font-size: 100px;
+      margin: 0px;
+      padding: 0 10px;
+      position: relative;
+      float: left;
+      list-style: none;
+      text-align: center;
+      z-index: 2;
+      transition:  all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
+    }
+    .active {
+      height: 215px;
+    }
+    .carouselbox button {
+      border: none;
+      visibility: hidden;
+    }
+    .active button {
+      visibility: visible;
+    } 
+    .active .buttons {
+      padding: 5px 0;
+      text-align: center;
+      z-index: 10;
+      position: absolute;
+      height: 100%;
+    }
+    .active dd {
+      position: relative;
+      display: inline-block;
+    }
+    #catscontrols a {
+        width: 40px; 
+        height: 110px; 
+        position: absolute; 
+        margin-top: 30px; 
+        z-index: 3; 
+        display: block; 
+        text-indent: -9000px; 
+        background: url('http://www.responsive.servup12.co.uk/images/slidercontrols.png') no-repeat 0 -3px; 
+        cursor: pointer; 
+        opacity: 0.7;
+      }
+      .prev { 
+        left: 0; 
+        background-position: 0 -12px; 
+        }
+      .next {
+        margin-left: 1059px;
+        background-position: -108px -12px; 
+        }
+      .rewind-vert{
+        margin-top: -40px !important;
+        transform: rotate(90deg) !important;
+        margin-left: 130px;
+        left: 50%;
+        }
+      .forward-vert{
+          transform: rotate(90deg);
+          margin-left: 130px;
+          left: 50%;
+          bottom: -11px;
+        }
+  </style>
+</head>
+<body>
+<div class="carouselbox active">
+  <div class="buttons" id="catscontrols">
+    <a class="prev">
+       ◀ <span class="offscreen">Previous</span>
+    </a>
+    <a class="next">
+      <span class="offscreen">Next</span> ▶ 
+    </a>
+  </div>
+  <dl class="box imglist" id="fcategories">
+      <dd class="first slide" id="fcat1"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
+      <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
+      <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd id="fcat4" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
+      <dd id="fcat9" class="slide"><a href="/road-bikes/c9"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg9.jpeg" alt="Road Bikes" title="Road Bikes"></span></a></dd>
+      <dd id="fcat10" class="slide"><a href="/mountain-bikes/c10"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg10.jpeg" alt="Mountain Bikes" title="Mountain Bikes"></span></a></dd>
+      <dd class="last slide" id="fcat14"><a href="/accessories/c14"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg14.jpeg" alt="Accessories" title="Accessories"></span></a></dd>
+  </dl>
+</div>
+
+<script>
+  if ( $('fcategories') ) {
+    $('fcategories').wrap('div', {'class': 'carouselbox active' });
+    // create new carousel based on prototype class
+   var fcategories = new carousel({
+        box       : 'carouselbox',
+        slider    : 'fcategories',
+        controls  : 'catscontrols',
+        skipnext  : 'next',
+        skipprev  : 'prev',
+        items     : 'dd',
+        timing    : 1
+    });
+  }
+</script>
+</body>
+</html>
