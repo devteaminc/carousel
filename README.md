@@ -5,7 +5,7 @@
 							/ /__| (_| | | | (_) | |_| \__ \  __/ |
 							\____/\__,_|_|  \___/ \__,_|___/\___|_|
 ```
-A simple image Carousel slider built using Prototype.js and CSS Animations
+An image Carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js.
 
 ##Options
 
@@ -37,7 +37,6 @@ if ( $('fcategories') ) {
   $('fcategories').insert({before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
   
   // The most important part, create the new carousel and set options:
-  
  	var fcategories = new carousel({
       box       : 'carouselbox',
       slider    : 'fcategories',

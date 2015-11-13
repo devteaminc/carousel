@@ -1,6 +1,15 @@
 /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-<><><><><><><><><><><><><> Carousel Class v0.1 by Alan Sutherland <><><><><><><><><><><><><><><><><>
+<><><><><><><><><><><><><><><><>  Carousel v0.2 <><><><><><><><><><><><><><><><><><><><><><><><><><>
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+/**
+ * @author Alan Sutherland 
+ * @license MIT
+ * @require prototype.js
+ */
+
+if (typeof(Prototype) == "undefined") {
+    throw "protoValid requires prototype.js";
+}
 
 var carousel = Class.create({
     initialize: function(options) {
