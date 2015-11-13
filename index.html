@@ -6,79 +6,149 @@
   <title>Carousel</title>
   <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
   <style type="text/css">
-    .carouselbox {
-      font-family: helvetica,sans-serif;
-      font-size: 14px;
-      width: 1092px;
-      position: relative;
-      margin: 1em;
-      overflow: hidden;
-    }
-    #fcategories {
-      margin: 0;
-      padding: 0;
-      width: 200%;
-      position: absolute;
-    }
-    #fcategories dd {
-      font-size: 100px;
-      margin: 0px;
-      padding: 0 10px;
-      position: relative;
-      float: left;
-      list-style: none;
-      text-align: center;
-      z-index: 2;
-      transition:  all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
-    }
-    .active {
-      height: 215px;
-    }
-    .carouselbox button {
-      border: none;
-      visibility: hidden;
-    }
-    .active button {
-      visibility: visible;
-    } 
-    .active .buttons {
-      padding: 5px 0;
-      text-align: center;
-      z-index: 10;
-      position: absolute;
-      height: 100%;
-    }
-    .active dd {
-      position: relative;
-      display: inline-block;
-    }
-    #catscontrols a {
-        width: 40px; 
-        height: 110px; 
-        position: absolute; 
-        margin-top: 30px; 
-        z-index: 3; 
-        display: block; 
-        text-indent: -9000px; 
-        background: url('http://www.responsive.servup12.co.uk/images/slidercontrols.png') no-repeat 0 -3px; 
-        cursor: pointer; 
-        opacity: 0.7;
-      }
-      .prev { 
-        left: 0; 
-        background-position: 0 -12px; 
+            .carouselbox {
+          font-family: helvetica,sans-serif;
+          font-size: 14px;
+          max-width: 1170px;
+          position: relative;
+          margin: 1em auto;
+          overflow: hidden;
         }
-      .next {
-        margin-left: 1059px;
-        background-position: -108px -12px; 
+        
+        @media (max-width: 768px) {
+          .carouselbox {
+            height: 250px;
+          }
         }
-      .rewind-vert{
-        margin-top: -40px !important;
-        transform: rotate(90deg) !important;
-        margin-left: 130px;
-        left: 50%;
+        
+        h1 {
+          color: #32CDBA;
+          font-family: sans-serif;
+          font-size: 40px;
+          text-align: center;
+          margin-bottom: 0;
         }
-      .forward-vert{
+        
+        #fcategories {
+          margin: 25px 0 0;
+          padding: 0;
+          width: 200%;
+          position: relative;
+          transition: all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
+        }
+        
+        #fcategories .subheading {
+          margin: -30px 0 10px;
+          width: 50%;
+          position: absolute;
+        }
+        
+        @media (max-width: 768px) {
+          #fcategories .caption {
+            padding: 0 0 1em;
+          }
+        }
+        
+        @media (max-width: 550px) {
+          #fcategories .caption {
+            margin-bottom: 40px;
+          }
+        }
+        
+        #fcategories dd {
+          width: calc(100% /8);
+          min-height: 190px;
+          font-size: 100px;
+          margin: 5px 0;
+          padding: 0;
+          position: relative;
+          display: inline-block;
+          list-style: none;
+          text-align: center;
+          z-index: 2;
+          transition: all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
+        }
+        
+        @media (max-width: 1080px) {
+          #fcategories dd {
+            width: calc(100% /4);
+          }
+        }
+        
+        @media (max-width: 550px) {
+          #fcategories dd {
+            width: calc(100% /2);
+          }
+        }
+        
+        #fcategories dd .imgholder {
+          margin: 0 auto;
+        }
+        
+        #fcategories dd a {
+          margin: 0;
+        }
+        
+        .carouselbox button {
+          border: none;
+          visibility: hidden;
+        }
+        
+        .active button {
+          visibility: visible;
+        }
+        
+        .active .buttons {
+          padding: 5px 0;
+          text-align: center;
+          z-index: 10;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+        }
+        
+        .active dd {
+          position: relative;
+          display: inline-block;
+        }
+        
+        #catscontrols a {
+          width: 40px;
+          height: 110px;
+          position: absolute;
+          margin-top: 60px;
+          z-index: 3;
+          display: block;
+          text-indent: -9000px;
+          background: url("http://www.responsive.servup12.co.uk/images/slidercontrols.png") no-repeat;
+          cursor: pointer;
+          opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+          #catscontrols a {
+            display: none;
+          }
+        }
+        
+        #catscontrols a.prev {
+          left: 0;
+          background-position: 0 -12px;
+        }
+        
+        #catscontrols a.next {
+          right: 0;
+          background-position: -107px -12px;
+        }
+        
+        .rewind-vert {
+          margin-top: -40px !important;
+          transform: rotate(90deg) !important;
+          margin-left: 130px;
+          left: 50%;
+        }
+        
+        .forward-vert {
           transform: rotate(90deg);
           margin-left: 130px;
           left: 50%;
@@ -87,6 +157,7 @@
   </style>
 </head>
 <body>
+  <h1>Carousel</h1>
 <div class="carouselbox active">
   <div class="buttons" id="catscontrols">
     <a class="prev">
@@ -106,7 +177,7 @@
       <dd class="last slide" id="fcat14"><a href="/accessories/c14"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg14.jpeg" alt="Accessories" title="Accessories"></span></a></dd>
   </dl>
 </div>
-
+<script src="slider.js"></script>
 <script>
   if ( $('fcategories') ) {
     $('fcategories').wrap('div', {'class': 'carouselbox active' });
@@ -119,9 +190,6 @@
         skipprev  : 'prev',
         items     : 'dd',
         timing    : 1
-        // vertical  : true,
-        // vertWidth : 285,
-        // vertHeight: 875
     });
   }
 </script>

@@ -1,11 +1,13 @@
 
 ```
- 							  / __\__ _ _ __ ___  _   _ ___  ___| |
- 							 / /  / _` | '__/ _ \| | | / __|/ _ \ |
-							/ /__| (_| | | | (_) | |_| \__ \  __/ |
-							\____/\__,_|_|  \___/ \__,_|___/\___|_|
+                / __\__ _ _ __ ___  _   _ ___  ___| |
+               / /  / _` | '__/ _ \| | | / __|/ _ \ |
+              / /__| (_| | | | (_) | |_| \__ \  __/ |
+              \____/\__,_|_|  \___/ \__,_|___/\___|_|
 ```
-An image Carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js.
+An image Carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js. Works best with images of equal width and height.
+
+Demo: http://devteaminc.github.io/carousel/
 
 ##Options
 
@@ -27,7 +29,7 @@ An image Carousel slider built using Prototype.js and CSS Animations. This plugi
 ```
 // Invoke carousel if slider element exists
 if ( $('fcategories') ) {    
-		
+    
   // Insert carouselbox div and wrap slider container within it 
   // Use this if you do not have access to the markup and need to add elements in using JS:
   $('fcategories').wrap('div', {'class': 'carouselbox active' });
@@ -37,7 +39,7 @@ if ( $('fcategories') ) {
   $('fcategories').insert({before:'<div id="catscontrols"><a class="rewind prev">&laquo; Prev</a><a class="forward next">Next &raquo;</a></div>'});
   
   // The most important part, create the new carousel and set options:
- 	var fcategories = new carousel({
+  var fcategories = new carousel({
       box       : 'carouselbox',
       slider    : 'fcategories',
       controls  : 'catscontrols',
@@ -49,6 +51,5 @@ if ( $('fcategories') ) {
   }
 ```
 
-##Demo 
-
-(http://devteaminc.github.io/carousel/)
+##Demo:
+http://devteaminc.github.io/carousel/
