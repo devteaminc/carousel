@@ -6,10 +6,11 @@
  * @license MIT
  * @require prototype.js
  */
-
 if (typeof(Prototype) == "undefined") {
     throw "protoValid requires prototype.js";
 }
+
+var autoplay;
 
 var carousel = Class.create({
     initialize: function(options) {
@@ -24,7 +25,8 @@ var carousel = Class.create({
           timing          : 1,
           vertical        : false,
           vertWidth       : 300,
-          vertHeight      : 800
+          vertHeight      : 800,
+          automate        : false
         };
         this.internal = {
         // Define the global counter, the items and the current item 
@@ -42,7 +44,8 @@ var carousel = Class.create({
           lastSlideHeight : 0,
           vertical        : false,
           xDown           : null,
-          yDown           : null
+          yDown           : null,
+          automate        : false
         };
         Object.extend(this.options, options || {}); 
         // select container
@@ -72,7 +75,8 @@ var carousel = Class.create({
         this.internal.xDown = null;
         this.internal.yDown = null;
         this.internal.container.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
-        this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false);    
+        this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false); 
+        this.animateAuto();
         // If Vertical is set, change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
@@ -84,11 +88,11 @@ var carousel = Class.create({
            $(this.options.controls).childElements()[1].addClassName('forward-vert');
         }                         
         // Next/Prev Button click listeners
-        $$('.'+this.options.skipnext).each(function(elmnt){
+        $$('.' + this.options.skipnext).each(function(elmnt){
             $(elmnt).observe('click', function(){ 
               this.buttonAction(elmnt);}.bindAsEventListener(this));
         }.bindAsEventListener(this));
-        $$('.'+this.options.skipprev).each(function(elmnt){
+        $$('.' + this.options.skipprev).each(function(elmnt){
             $(elmnt).observe('click', function(){ 
               this.buttonAction(elmnt);}.bindAsEventListener(this));
         }.bindAsEventListener(this));
@@ -97,10 +101,14 @@ var carousel = Class.create({
           // if next button is clicked
       if($(e).hasClassName(this.options.skipnext)){
           // animate slides forwards
-          this.animate('next');
+          this.animate('next'); 
+          this.clearAuto();
+          // clearInterval(autoplay);
       }else{
           // animate slides backwards
           this.animate('prev');
+          this.clearAuto();
+          // clearInterval(autoplay);
       }  
   },
   handleTouchStart: function(evt) {                                   
@@ -163,7 +171,7 @@ var carousel = Class.create({
          // prepend last slide in to first position, animate slides based on width of this slide                                                        
          this.offset(this.internal.lastSlide, "prev");
          // halving delay time makes previous slide animate at similar speed to next
-         this.slide.bind(this, this.internal.lastSlide, "prev").delay(0.05);
+         this.slide.bind(this, this.internal.lastSlide, "prev").delay(0.1);
     }
   },
   // offset takes two arguments one to define the target element and another to check which button has been clicked
@@ -199,5 +207,15 @@ var carousel = Class.create({
     } else {
       elm.setStyle({'margin-top': 0 + 'px'});
     }                  
+  },
+  animateAuto: function(){                                                                    // automatic transitions
+          if(this.options.automate === true){
+              autoplay = setInterval(function() { 
+                this.animate('next');
+              }.bindAsEventListener(this),3000);
+          } 
+  },
+  clearAuto: function(){
+    clearInterval(autoplay);
   }
 });
