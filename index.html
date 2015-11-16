@@ -85,6 +85,11 @@
           transition: all 500ms ease-in-out;
         }
         
+        #vcategories dd{
+          margin: 0 5px;
+          padding: 5px 0;
+        }
+
         @media (max-width: 1080px) {
           #fcategories dd, #vcategories dd {
             width: calc(100% /4);
@@ -140,11 +145,11 @@
           opacity: 0.7;
         }
         
-        @media (max-width: 768px) {
+        /*@media (max-width: 768px) {
           #catscontrols a, #vcatscontrols a  {
             display: none;
           }
-        }
+        }*/
         
         #catscontrols a.prev{
           left: 0;
@@ -177,7 +182,7 @@
         }
 
         .github-corner:hover .octo-arm{
-          animation:octocat-wave 560ms ease-in-out
+          animation:octocat-wave 560ms ease-in-out;
           
         }
         @keyframes octocat-wave{
