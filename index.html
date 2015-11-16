@@ -8,6 +8,7 @@
   <style type="text/css">
         body{
           background: #333;
+          margin: 0;
         }
         .carouselbox, .vcarouselbox {
           font-family: helvetica,sans-serif;
@@ -29,9 +30,9 @@
         
         h1 {
           color: #FD6C6C;
-          border: 10px solid;
+/*          border: 10px solid;
           border-left: none;
-          border-right: none;
+          border-right: none;*/
           width: 50%;
           margin: 40px auto 0;
           font-family: sans-serif;
@@ -72,16 +73,16 @@
         
         #fcategories dd, #vcategories dd {
           width: calc(100% /8);
-          height: 205px;
           min-height: 190px;
           margin: 5px 0;
           padding: 0;
           position: relative;
-          display: inline-block;
+          display: block;
+          float: left;
           text-align: center;
           overflow: hidden;
           z-index: 2;
-          transition: all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
+          transition: all 500ms ease-in-out;
         }
         
         @media (max-width: 1080px) {
