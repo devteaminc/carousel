@@ -182,7 +182,7 @@ var carousel = Class.create({
       // offset the slides by width of the selected slide i.e. first/last
       elm.setStyle({'margin-left': -thisWidth + 'px'});
     } else {
-      elm.setStyle({'margin-top': -(thisHeight -5) + 'px'});
+      elm.setStyle({'margin-top': -thisHeight + 'px'});
     }
   },
   // slide takes two arguments one to define the target element and another to check which button has been clicked
