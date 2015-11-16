@@ -103,12 +103,10 @@ var carousel = Class.create({
           // animate slides forwards
           this.animate('next'); 
           this.clearAuto();
-          // clearInterval(autoplay);
       }else{
           // animate slides backwards
           this.animate('prev');
           this.clearAuto();
-          // clearInterval(autoplay);
       }  
   },
   handleTouchStart: function(evt) {                                   
@@ -127,17 +125,21 @@ var carousel = Class.create({
           if ( xDiff > 0 ) {
               /* left swipe */ 
               this.animate('next');
+              this.clearAuto();
           } else {
               /* right swipe */
               this.animate('prev');
+              this.clearAuto();
           }                       
       } else {
           if ( yDiff > 0 ) {
               /* up swipe */ 
               this.animate('next');
+              this.clearAuto();
           } else { 
               /* down swipe */
               this.animate('prev');
+              this.clearAuto();
           }                                                                 
       }
       /* reset values */
