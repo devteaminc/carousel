@@ -93,49 +93,49 @@ var carousel = Class.create({
               this.buttonAction(elmnt);}.bindAsEventListener(this));
         }.bindAsEventListener(this));
     },
-    buttonAction: function(e){
-            // if next button is clicked
-        if($(e).hasClassName(this.options.skipnext)){
-            // animate slides forwards
-            this.animate('next');
-        }else{
-            // animate slides backwards
-            this.animate('prev');
-        }  
-    },
-    handleTouchStart: function(evt) {                                   
-        this.internal.xDown = evt.touches[0].clientX;                                      
-        this.internal.yDown = evt.touches[0].clientY;                                      
-    },
-    handleTouchMove: function(evt) {
-        if ( ! this.internal.xDown || ! this.internal.yDown ) {
-            return;
-        }
-        var xUp = evt.touches[0].clientX;                                    
-        var yUp = evt.touches[0].clientY;
-        var xDiff = this.internal.xDown - xUp;
-        var yDiff = this.internal.yDown - yUp;
-        if ( Math.abs( xDiff ) > Math.abs( yDiff ) && this.internal.vertical === false ) {/*most significant*/
-            if ( xDiff > 0 ) {
-                /* left swipe */ 
-                this.animate('next');
-            } else {
-                /* right swipe */
-                this.animate('prev');
-            }                       
-        } else {
-            if ( yDiff > 0 ) {
-                /* up swipe */ 
-                this.animate('next');
-            } else { 
-                /* down swipe */
-                this.animate('prev');
-            }                                                                 
-        }
-        /* reset values */
-        this.internal.xDown = null;
-        this.internal.yDown = null;                                             
-    },
+  buttonAction: function(e){
+          // if next button is clicked
+      if($(e).hasClassName(this.options.skipnext)){
+          // animate slides forwards
+          this.animate('next');
+      }else{
+          // animate slides backwards
+          this.animate('prev');
+      }  
+  },
+  handleTouchStart: function(evt) {                                   
+      this.internal.xDown = evt.touches[0].clientX;                                      
+      this.internal.yDown = evt.touches[0].clientY;                                      
+  },
+  handleTouchMove: function(evt) {
+      if ( ! this.internal.xDown || ! this.internal.yDown ) {
+          return;
+      }
+      var xUp = evt.touches[0].clientX;                                    
+      var yUp = evt.touches[0].clientY;
+      var xDiff = this.internal.xDown - xUp;
+      var yDiff = this.internal.yDown - yUp;
+      if ( Math.abs( xDiff ) > Math.abs( yDiff ) && this.internal.vertical === false ) {/*most significant*/
+          if ( xDiff > 0 ) {
+              /* left swipe */ 
+              this.animate('next');
+          } else {
+              /* right swipe */
+              this.animate('prev');
+          }                       
+      } else {
+          if ( yDiff > 0 ) {
+              /* up swipe */ 
+              this.animate('next');
+          } else { 
+              /* down swipe */
+              this.animate('prev');
+          }                                                                 
+      }
+      /* reset values */
+      this.internal.xDown = null;
+      this.internal.yDown = null;                                             
+  },
   animate: function(direction){
     // get timing 
     var timing = this.options.timing;
@@ -163,7 +163,7 @@ var carousel = Class.create({
          // prepend last slide in to first position, animate slides based on width of this slide                                                        
          this.offset(this.internal.lastSlide, "prev");
          // halving delay time makes previous slide animate at similar speed to next
-         this.slide.bind(this, this.internal.lastSlide, "prev").delay(0.1);
+         this.slide.bind(this, this.internal.lastSlide, "prev").delay(0.05);
     }
   },
   // offset takes two arguments one to define the target element and another to check which button has been clicked
