@@ -20,9 +20,10 @@
         }
         .vcarouselbox{
           margin: 0 auto;
+          width: 100%;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 1080px) {
           .carouselbox {
             height: 250px;
           }
@@ -73,7 +74,7 @@
         
         #fcategories dd, #vcategories dd {
           width: calc(100% /8);
-          min-height: 190px;
+          /*min-height: 190px;*/
           margin: 5px 0;
           padding: 0;
           position: relative;
@@ -104,6 +105,10 @@
         
         #fcategories dd .imgholder, #vcategories dd .imgholder {
           margin: 0 auto;
+        }
+
+        #fcategories dd .imgholder img, #vcategories dd .imgholder img{
+          max-width: 100%;
         }
         
         #fcategories dd a, , #vcategories dd a {
@@ -283,7 +288,7 @@
         items       : 'dd',
         timing      : 1,
         vertical    : true,
-        vertWidth   : 300,
+        vertWidth   : "100%",
         vertHeight  : 800
     });
    $('vcategories').wrap('div', {'class': 'vcarouselbox active' });
