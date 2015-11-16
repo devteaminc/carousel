@@ -6,12 +6,11 @@
  * @license MIT
  * @require prototype.js
  */
-
 if (typeof(Prototype) == "undefined") {
     throw "protoValid requires prototype.js";
 }
 
-var timeout;                                                             // stores timeout object
+var autoplay;
 
 var carousel = Class.create({
     initialize: function(options) {
@@ -77,23 +76,7 @@ var carousel = Class.create({
         this.internal.yDown = null;
         this.internal.container.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
         this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false); 
-
-        // if(this.internal.auto === true){ 
-           
-        // }
-        // this.auto();
-
-        // new PeriodicalExecuter(function() {
-        //   if(this.options.auto){
-        //     this.animate('next');
-        //   }
-        // }, 3);
-
-
-        timeout = setTimeout(function() { 
-          this.animateAuto();
-        }.bindAsEventListener(this),(3));
-
+        this.animateAuto();
         // If Vertical is set, change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
@@ -118,10 +101,14 @@ var carousel = Class.create({
           // if next button is clicked
       if($(e).hasClassName(this.options.skipnext)){
           // animate slides forwards
-          this.animate('next');
+          this.animate('next'); 
+          this.clearAuto();
+          // clearInterval(autoplay);
       }else{
           // animate slides backwards
           this.animate('prev');
+          this.clearAuto();
+          // clearInterval(autoplay);
       }  
   },
   handleTouchStart: function(evt) {                                   
@@ -222,10 +209,13 @@ var carousel = Class.create({
     }                  
   },
   animateAuto: function(){                                                                    // automatic transitions
-          if(this.options.automate){
-              timeout = setTimeout(function() { 
-                this.animateAuto();
-              }.bindAsEventListener(this),(3));
-          }
-      },
+          if(this.options.automate === true){
+              autoplay = setInterval(function() { 
+                this.animate('next');
+              }.bindAsEventListener(this),3000);
+          } 
+  },
+  clearAuto: function(){
+    clearInterval(autoplay);
+  }
 });
