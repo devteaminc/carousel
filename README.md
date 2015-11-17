@@ -5,7 +5,7 @@
                           / /__| (_| | | | (_) | |_| \__ \  __/ |
                           \____/\__,_|_|  \___/ \__,_|___/\___|_|
 ```
-An image Carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js. Works best with images of equal width and height.
+A responsive image carousel slider built using Prototype.js and CSS Animations. This plugin has a hard dependency on Prototype.js. Works best with images of equal width and height. You can configure the carousel to be displayed horizontally or vertically and there is also an autoplay option.
 
 Demo: http://devteaminc.github.io/carousel/
 
@@ -23,6 +23,9 @@ Demo: http://devteaminc.github.io/carousel/
 | vertical        | false             | If set to true this will change the layout to vertical               |
 | vertWidth       | 300               | Set the width of the vertical container                              |
 | vertHeight      | 800               | Set the height of the vertical container                             |
+| autoplay        | false             | Set to true for autoplay                                             |
+| autoDelay       | 3                 | Delay between autoplay transitions                                   |
+
 
 ##Example implementation
 
@@ -55,6 +58,3 @@ if ( $('fcategories') ) {
 
 Horizontal:
 http://devteaminc.github.io/carousel/
-
-Vertical:
-http://devteaminc.github.io/carousel/vertical.html

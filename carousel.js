@@ -10,7 +10,7 @@ if (typeof(Prototype) == "undefined") {
     throw "protoValid requires prototype.js";
 }
 
-var autoplay;
+var automate;
 
 var carousel = Class.create({
     initialize: function(options) {
@@ -26,7 +26,8 @@ var carousel = Class.create({
           vertical        : false,
           vertWidth       : 300,
           vertHeight      : 800,
-          automate        : false
+          autoplay        : false,
+          autoDelay       : 3
         };
         this.internal = {
         // Define the global counter, the items and the current item 
@@ -45,7 +46,7 @@ var carousel = Class.create({
           vertical        : false,
           xDown           : null,
           yDown           : null,
-          automate        : false
+          autoplay        : false
         };
         Object.extend(this.options, options || {}); 
         // select container
@@ -211,13 +212,17 @@ var carousel = Class.create({
     }                  
   },
   animateAuto: function(){                                                                    // automatic transitions
-          if(this.options.automate === true){
-              autoplay = setInterval(function() { 
-                this.animate('next');
-              }.bindAsEventListener(this),3000);
-          } 
+    // delay between transitions. Option * 1000 to convert to milliseconds
+    var time = this.options.autoDelay * 1000;
+    // The autoloop
+        if(this.options.autoplay === true){
+            automate = setInterval(function() { 
+              this.animate('next');
+            }.bindAsEventListener(this), time);
+        } 
   },
   clearAuto: function(){
-    clearInterval(autoplay);
+    // Break the autoloop
+    clearInterval(automate);
   }
 });

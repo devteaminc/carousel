@@ -6,7 +6,7 @@
   <title>Carousel</title>
   <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
   <style type="text/css">
-            .carouselbox {
+        .carouselbox {
           font-family: helvetica,sans-serif;
           font-size: 14px;
           max-width: 1170px;
@@ -33,6 +33,7 @@
           margin: 25px 0 0;
           padding: 0;
           width: 200%;
+          max-height: 220px;
           position: relative;
           transition: all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
         }
@@ -304,9 +305,10 @@
       <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
       <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
       <dd id="fcat4" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
-      <dd id="fcat9" class="slide"><a href="/road-bikes/c9"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg9.jpeg" alt="Road Bikes" title="Road Bikes"></span></a></dd>
-      <dd id="fcat10" class="slide"><a href="/mountain-bikes/c10"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg10.jpeg" alt="Mountain Bikes" title="Mountain Bikes"></span></a></dd>
-      <dd class="last slide" id="fcat14"><a href="/accessories/c14"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg14.jpeg" alt="Accessories" title="Accessories"></span></a></dd>
+      <dd class="slide" id="fcat5"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
+      <dd id="fcat6" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
+      <dd id="fcat7" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd id="fcat8" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
   </dl>
 </div>
 <script src="carousel.js"></script>
@@ -322,7 +324,8 @@
         skipprev  : 'prev',
         items     : 'dd',
         timing    : 1,
-        automate  : true
+        autoplay  : true,
+        autoDelay : 3
     });
   }
 </script>
