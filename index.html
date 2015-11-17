@@ -10,7 +10,7 @@
           background: #333;
           margin: 0;
         }
-        .carouselbox, .vcarouselbox {
+        .carouselbox, .acarouselbox , .vcarouselbox {
           font-family: helvetica,sans-serif;
           font-size: 14px;
           max-width: 1170px;
@@ -24,7 +24,7 @@
         }
         
         @media (max-width: 1080px) {
-          .carouselbox {
+          .carouselbox, .acarouselbox {
             height: 230px;
           }
         }
@@ -55,7 +55,7 @@
           }
         }
         
-        #fcategories, #vcategories {
+        #fcategories, #acategories, #vcategories {
           margin: 25px 0 0;
           padding: 0;
           width: 200%;
@@ -74,18 +74,18 @@
         }
         
         @media (max-width: 768px) {
-          #fcategories .caption, #vcategories .caption {
+          #fcategories .caption, #acategories .caption, #vcategories .caption {
             padding: 0 0 1em;
           }
         }
         
         @media (max-width: 550px) {
-          #fcategories .caption, #vcategories .caption {
+          #fcategories .caption, #acategories .caption, #vcategories .caption {
             margin-bottom: 40px;
           }
         }
         
-        #fcategories dd, #vcategories dd {
+        #fcategories dd, #acategories dd, #vcategories dd {
           width: calc(100% /8);
           /*min-height: 190px;*/
           margin: 5px 0;
@@ -105,30 +105,30 @@
         }
 
         @media (max-width: 1080px) {
-          #fcategories dd, #vcategories dd {
+          #fcategories dd, #acategories dd, #vcategories dd {
             width: calc(100% /4);
           }
         }
         
         @media (max-width: 550px) {
-          #fcategories dd, #vcategories dd {
+          #fcategories dd, #acategories dd, #vcategories dd {
             width: calc(100% /2);
           }
         }
         
-        #fcategories dd .imgholder, #vcategories dd .imgholder {
+        #fcategories dd .imgholder, #acategories dd .imgholder, #vcategories dd .imgholder {
           margin: 0 auto;
         }
 
-        #fcategories dd .imgholder img, #vcategories dd .imgholder img{
+        #fcategories dd .imgholder img, #acategories dd .imgholder img, #vcategories dd .imgholder img{
           max-width: 100%;
         }
         
-        #fcategories dd a, , #vcategories dd a {
+        #fcategories dd a, #acategories dd a, #vcategories dd a {
           margin: 0;
         }
         
-        .carouselbox button, .vcarouselbox button {
+        .carouselbox button, .acarouselbox button, .vcarouselbox button {
           border: none;
           visibility: hidden;
         }
@@ -150,7 +150,7 @@
           display: inline-block;
         }
         
-        #catscontrols a, #vcatscontrols a {
+        #catscontrols a, #acatscontrols a, #vcatscontrols a {
           width: 40px;
           height: 110px;
           position: absolute;
@@ -169,13 +169,13 @@
           }
         }*/
         
-        #catscontrols a.prev{
+        #catscontrols a.prev, #acatscontrols a.aprev{
           left: 0;
           background-position: 0 -12px;
           z-index: 10;
         }
         
-        #catscontrols a.next{
+        #catscontrols a.next, #acatscontrols a.anext{
           right: 0;
           background-position: -107px -12px;
           z-index: 10;
@@ -254,6 +254,29 @@
   </dl>
 </div>
 <!-- Horizontal Carousel END-->
+  <h2>Horizontal Autoplay</h2>
+  <!-- Horizontal Autoplay Carousel -->
+  <div class="acarouselbox active">
+    <div class="buttons" id="acatscontrols">
+      <a class="aprev">
+         ◀ <span class="offscreen">Previous</span>
+      </a>
+      <a class="anext">
+        <span class="offscreen">Next</span> ▶ 
+      </a>
+    </div>
+  <dl class="box imglist" id="acategories">
+      <dd class="first slide" id="fcat1"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
+      <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
+      <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd id="fcat4" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
+      <dd id="fcat9" class="slide"><a href="/road-bikes/c9"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Road Bikes" title="Road Bikes"></span></a></dd>
+      <dd id="fcat10" class="slide"><a href="/mountain-bikes/c10"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Mountain Bikes" title="Mountain Bikes"></span></a></dd>
+      <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd class="last slide" id="fcat14"><a href="/accessories/c14"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Accessories" title="Accessories"></span></a></dd>
+  </dl>
+</div>
+<!-- Horizontal Autoplay Carousel END-->
 <h2>Vertical</h2>
 <!-- Vertical Carousel -->
 <div class="vcarouselbox active">
@@ -282,19 +305,34 @@
 <script src="https://rawgit.com/devteaminc/carousel/master/carousel.js"></script>
 <script>
   if ( $('fcategories') ) {
-    $('fcategories').wrap('div', {'class': 'carouselbox active' });
+     // Wrap slider within container
+     $('fcategories').wrap('div', {'class': 'carouselbox active' });
+     // create new carousel based on prototype class
+    var fcategories = new carousel({
+         box       : 'carouselbox',
+         slider    : 'fcategories',
+         controls  : 'catscontrols',
+         skipnext  : 'next',
+         skipprev  : 'prev',
+         items     : 'dd',
+         timing    : 1
+     });
+
+    $('acategories').wrap('div', {'class': 'acarouselbox active' });
     // create new carousel based on prototype class
-   var fcategories = new carousel({
-        box       : 'carouselbox',
-        slider    : 'fcategories',
-        controls  : 'catscontrols',
-        skipnext  : 'next',
-        skipprev  : 'prev',
+    var acategories = new carousel({
+        box       : 'acarouselbox',
+        slider    : 'acategories',
+        controls  : 'acatscontrols',
+        skipnext  : 'anext',
+        skipprev  : 'aprev',
         items     : 'dd',
         timing    : 1,
-        automate  : true
+        autoplay  : true,
+        autoDelay : 3
     });
-    $('fcategories').wrap('div', {'class': 'carouselbox active' });
+
+    $('vcategories').wrap('div', {'class': 'vcarouselbox active' });
     // create new carousel based on prototype class
    var vertical = new carousel({
         box         : 'vcarouselbox',
@@ -308,7 +346,6 @@
         vertWidth   : "100%",
         vertHeight  : 800
     });
-   $('vcategories').wrap('div', {'class': 'vcarouselbox active' });
   }
 </script>
 </body>
