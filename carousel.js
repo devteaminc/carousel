@@ -78,6 +78,13 @@ var carousel = Class.create({
         this.internal.container.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
         this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false); 
         this.animateAuto();
+        Event.observe(window, "resize", function() {
+            var width = document.viewport.getWidth();
+            var height = document.viewport.getHeight();
+            if(width < 960){
+                this.options.vertical === false;
+            }
+        });
         // If Vertical is set, change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
