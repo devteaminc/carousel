@@ -20,7 +20,27 @@
       <span class="offscreen">Next</span> ▶ 
     </a>
   </div>
-  <dl class="box imglist" id="vcategories">
+  <dl class="box imglist carousel" id="vcategories">
+      <dd class="first slide" id="fcat1"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
+      <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
+      <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd id="fcat4" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
+      <dd class="slide" id="fcat5"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
+      <dd id="fcat6" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
+      <dd id="fcat7" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
+      <dd id="fcat8" class="slide"><a href="/bikes/c4"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg4.jpeg" alt="Bikes" title="Bikes"></span></a></dd>
+  </dl>
+</div>
+<div class="carouselbox active">
+  <div class="buttons" id="catscontrols">
+    <a class="prev">
+       ◀ <span class="offscreen">Previous</span>
+    </a>
+    <a class="next">
+      <span class="offscreen">Next</span> ▶ 
+    </a>
+  </div>
+  <dl class="box imglist carousel" id="fcategories">
       <dd class="first slide" id="fcat1"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
       <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
       <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
@@ -35,12 +55,23 @@
 <script>
   if ( $('vcategories') ) {
     // create new carousel based on prototype class
-    var fcategories = new carousel({
+    var vcategories = new carousel({
         box       : 'vcarouselbox',
         slider    : 'vcategories',
         controls  : 'vcatscontrols',
         skipnext  : 'vnext',
         skipprev  : 'vprev',
+        items     : 'dd',
+        vertical  : true,
+        vertHeight: 800,
+        vertWidth : "100%"
+    });
+    var fcategories = new carousel({
+        box       : 'carouselbox',
+        slider    : 'fcategories',
+        controls  : 'catscontrols',
+        skipnext  : 'next',
+        skipprev  : 'prev',
         items     : 'dd',
         vertical  : true,
         vertHeight: 800,

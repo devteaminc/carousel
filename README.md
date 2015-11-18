@@ -54,7 +54,6 @@ if ( $('fcategories') ) {
   }
 ```
 
-##Demos:
+##Demo:
 
-Horizontal:
 http://devteaminc.github.io/carousel/

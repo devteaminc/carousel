@@ -91,18 +91,16 @@ var carousel = Class.create({
               
         // }
 
-        Event.observe(window, "resize", function() {
+        // Event.observe(window, "resize", function() {
            // if Desktop width maintain vertical style 
            if(width >= 960 && this.options.vertical === true){
                this.internal.vertical = true;
-
            } 
            // if Mobile width switch style
            else if(width < 960 && this.options.vertical === true){
                this.internal.vertical = false;
-
            }
-        }.bindAsEventListener(this));
+        // }.bindAsEventListener(this));
 
         // If Vertical is set, change container style
         if(this.internal.vertical === true){
