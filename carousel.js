@@ -11,6 +11,7 @@ if (typeof(Prototype) == "undefined") {
 }
 
 var automate;
+var width = document.viewport.getWidth();
 
 var carousel = Class.create({
     initialize: function(options) {
@@ -78,13 +79,31 @@ var carousel = Class.create({
         this.internal.container.observe('touchstart', this.handleTouchStart.bindAsEventListener(this), false);        
         this.internal.container.observe('touchmove', this.handleTouchMove.bindAsEventListener(this), false); 
         this.animateAuto();
+        // Switch Vertical Carousel to Horizontal below 960px
+        
+        // if Desktop width maintain vertical style 
+        // if(width >= 960 && this.options.vertical === true){
+        //     this.internal.vertical = true;
+        // } 
+        // // if Mobile width switch style
+        // else if(width < 960 && this.internal.vertical === true){
+        //     this.internal.vertical = false;
+              
+        // }
+
         Event.observe(window, "resize", function() {
-            var width = document.viewport.getWidth();
-            var height = document.viewport.getHeight();
-            if(width < 960){
-                this.options.vertical === false;
-            }
-        });
+           // if Desktop width maintain vertical style 
+           if(width >= 960 && this.options.vertical === true){
+               this.internal.vertical = true;
+
+           } 
+           // if Mobile width switch style
+           else if(width < 960 && this.options.vertical === true){
+               this.internal.vertical = false;
+
+           }
+        }.bindAsEventListener(this));
+
         // If Vertical is set, change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});

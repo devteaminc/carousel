@@ -6,20 +6,21 @@
   <title>Carousel</title>
   <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="https://rawgit.com/devteaminc/carousel/master/carousel.css">
+  <!-- <link rel="stylesheet" type="text/css" href="https://rawgit.com/devteaminc/carousel/master/carousel.css"> -->
+   <link rel="stylesheet" type="text/css" href="carousel.css">
 </head>
 <body>
   <h1>Carousel</h1>
-<div class="carouselbox active">
-  <div class="buttons" id="catscontrols">
-    <a class="prev">
+<div class="vcarouselbox active">
+  <div class="buttons" id="vcatscontrols">
+    <a class="vprev">
        ◀ <span class="offscreen">Previous</span>
     </a>
-    <a class="next">
+    <a class="vnext">
       <span class="offscreen">Next</span> ▶ 
     </a>
   </div>
-  <dl class="box imglist" id="fcategories">
+  <dl class="box imglist" id="vcategories">
       <dd class="first slide" id="fcat1"><a href="/homeware/c1"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg1.jpeg" alt="Homeware" title="Homeware"></span></a></dd>
       <dd id="fcat3" class="slide"><a href="/electronics/c3"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg3.jpeg" alt="Electronics" title="Electronics"></span></a></dd>
       <dd id="fcat2" class="slide"><a href="/outdoor/c2"><span class="imgholder"><img src="http://www.responsive.servup12.co.uk/catthumbimg2.jpeg" alt="Outdoor" title="Outdoor"></span></a></dd>
@@ -32,18 +33,18 @@
 </div>
 <script src="carousel.js"></script>
 <script>
-  if ( $('fcategories') ) {
-    $('fcategories').wrap('div', {'class': 'carouselbox active' });
+  if ( $('vcategories') ) {
     // create new carousel based on prototype class
-   var fcategories = new carousel({
-        box       : 'carouselbox',
-        slider    : 'fcategories',
-        controls  : 'catscontrols',
-        skipnext  : 'next',
-        skipprev  : 'prev',
+    var fcategories = new carousel({
+        box       : 'vcarouselbox',
+        slider    : 'vcategories',
+        controls  : 'vcatscontrols',
+        skipnext  : 'vnext',
+        skipprev  : 'vprev',
         items     : 'dd',
         vertical  : true,
-        vertHeight: 800
+        vertHeight: 800,
+        vertWidth : "100%"
     });
   }
 </script>
