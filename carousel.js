@@ -87,11 +87,10 @@ var carousel = Class.create({
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});
            this.internal.container.setStyle({'width': this.options.vertWidth + 'px', 'height': this.options.vertHeight + 'px'});
-           this.internal.slider.childElements().each(function(e){
-            e.setStyle({'width': '100%'});
-          });
+           this.internal.slider.childElements().each(function(e) {e.setStyle({'width': '100%'});});
            $(this.options.controls).childElements()[0].addClassName('rewind-vert');
            $(this.options.controls).childElements()[1].addClassName('forward-vert');
+           console.log(true);
         }                         
         // Next/Prev Button click listeners
         $$('.' + this.options.skipnext).each(function(elmnt){

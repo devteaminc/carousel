@@ -3,44 +3,43 @@ body{
   margin: 0;
   font-family: 'Pacifico', cursive;
 }
-.carouselbox, .acarouselbox , .vcarouselbox {
+.carouselbox {
   font-size: 14px;
   max-width: 1170px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
 }
-.vcarouselbox{
+.vert-box{
   margin: 0 auto 40px;
   width: 100%;
 }
 
 @media (max-width: 1080px) {
-  .carouselbox, .acarouselbox {
+  .carouselbox {
     height: 230px;
   }
 }
 
 @media (max-width: 960px){
-  .vcarouselbox{
-    max-height: 200px;
+  .vert-box{
+    max-height: 23.5vw;
   }
-  .vcarouselbox #vcategories{
+  .vert-box .carousel{
     min-width: 200%;
     margin: 25px 0 0;
   }
-  .vcarouselbox #vcategories dd{
-    margin: 0;
-    padding: 0;
+  .vert-box #vert-carousel dd{
+    padding: 0 0 50px;
   }
 
-  #vcatscontrols a.vprev, #vcatscontrols a.vnext {
+  #vert-controls a.vert-prev, #vert-controls a.vert-next {
     left: 0;
     background-position: 0 -12px;
     z-index: 10;
   }
 
-  #vcatscontrols a.vnext {
+  #vert-controls a.vert-next {
     right: 0;
     left: inherit;
     background-position: -107px -12px;
@@ -80,16 +79,13 @@ p{
   text-shadow: 5px 6px 7px #111;
 }
 
-.carousel, #acategories, #vcategories {
+.carousel{
   margin: 25px 0 0;
   padding: 0;
   width: 200%;
   position: relative;
   transition: all 500ms cubic-bezier(0.53, -0.01, 0.24, 0.98);
   overflow: hidden;
-}
-#vcategories{
-  margin: 0;
 }
 
 .carousel .subheading {
@@ -99,20 +95,22 @@ p{
 }
 
 @media (max-width: 768px) {
-  .carousel .caption, #acategories .caption, #vcategories .caption {
+  .carousel .caption {
     padding: 0 0 1em;
   }
 }
 
 @media (max-width: 550px) {
-  .carousel .caption, #acategories .caption, #vcategories .caption {
+  .carousel .caption {
     margin-bottom: 40px;
+  }
+  .vert-box{
+    max-height: 50vw;
   }
 }
 
-.carousel dd, #acategories dd, #vcategories dd {
+.carousel dd {
   width: calc(100% /8);
-  /*min-height: 190px;*/
   margin: 5px 0;
   padding: 0;
   position: relative;
@@ -124,36 +122,36 @@ p{
   transition: all 500ms ease-in-out;
 }
 
-#vcategories dd{
+#vert-carousel dd{
   margin: 0 5px;
   padding: 5px 0;
 }
 
 @media (max-width: 1080px) {
-  #fcategories dd, #acategories dd, #vcategories dd {
+  .carousel dd {
     /*width: calc(100% /4);*/
   }
 }
 
 @media (max-width: 550px) {
-  .carousel dd, #acategories dd, #vcategories dd {
-    width: calc(100% /2);
+  .carousel dd {
+    width: calc(100% /4);
   }
 }
 
-.carousel dd .imgholder, #acategories dd .imgholder, #vcategories dd .imgholder {
+.carousel dd .imgholder {
   margin: 0 auto;
 }
 
-.carousel dd .imgholder img, #acategories dd .imgholder img, #vcategories dd .imgholder img{
+.carousel dd .imgholder img{
   max-width: 100%;
 }
 
-.carousel dd a, #acategories dd a, #vcategories dd a {
+.carousel dd a {
   margin: 0;
 }
 
-.carouselbox button, .acarouselbox button, .vcarouselbox button {
+.carouselbox button {
   border: none;
   visibility: hidden;
 }
@@ -175,11 +173,10 @@ p{
   display: inline-block;
 }
 
-#catscontrols a, #acatscontrols a, #vcatscontrols a {
+.buttons a {
   width: 40px;
   height: 110px;
   position: absolute;
-  /*margin-top: 60px;*/
   margin-top: 3.5vw;
   z-index: 3;
   display: block;
@@ -188,20 +185,20 @@ p{
   cursor: pointer;
   opacity: 0.7;
 }
-#catscontrols a.prev, #acatscontrols a.aprev{
+.buttons a.prev{
   left: 0;
   background-position: 0 -12px;
   z-index: 10;
 }
 
-#catscontrols a.next, #acatscontrols a.anext{
+.buttons a.next{
   right: 0;
   background-position: -107px -12px;
   z-index: 10;
 }
 
-#vcatscontrols a.rewind-vert {
-  margin-top: -40px;
+#vert-controls a.rewind-vert {
+  margin-top: -10px;
   transform: rotate(270deg);
   left: 50%;
   margin-left: -20px;
@@ -209,7 +206,7 @@ p{
   background-position: -107px -11px;
 }
 
-#vcatscontrols a.forward-vert {
+#vert-controls a.forward-vert {
   transform: rotate(90deg);
   left: 50%;
   margin-left: -20px;
