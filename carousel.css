@@ -25,7 +25,7 @@ body{
   .vcarouselbox{
     max-height: 200px;
   }
-  #vcategories{
+  .vcarouselbox #vcategories{
     min-width: 200%;
     margin: 25px 0 0;
   }
@@ -34,11 +34,13 @@ body{
     padding: 0;
   }
 
-  .vprev, .vnext {
+  #vcatscontrols a.vprev, #vcatscontrols a.vnext {
     left: 0;
+    background-position: 0 -12px;
+    z-index: 10;
   }
 
-  .vnext {
+  #vcatscontrols a.vnext {
     right: 0;
     left: inherit;
     background-position: -107px -12px;
