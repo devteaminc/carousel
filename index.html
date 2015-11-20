@@ -6,16 +6,17 @@
     <title>Carousel</title>
     <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="https://rawgit.com/devteaminc/carousel/master/carousel.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://rawgit.com/devteaminc/carousel/master/carousel.css"> -->
+    <link rel="stylesheet" type="text/css" href="carousel.css">
   </head>
   <body>
     <h1>Carousel</h1>
-    <div class="carouselbox active vert-box">
-      <div class="buttons" id="vert-controls">
-        <a class="prev vert-prev">Previous</a>
-        <a class="next vert-next">Next</a>
+    <div class="carouselbox active">
+      <div class="buttons" id="catscontrols">
+        <a class="prev"></a>
+        <a class="next"></a>
       </div>
-      <dl class="carousel" id="vert-carousel">
+      <dl class="carousel" id="carousel">
         <dd>
           <a href="#">
             <span class="imgholder">
@@ -76,18 +77,15 @@
     </div>
     <script src="carousel.js"></script>
     <script>
-      if ( $('vert-carousel') ) {
+      if ( $('carousel') ) {
         // create new carousel based on prototype class
-        var vertical = new carousel({
-            box       : 'vert-box',
-            slider    : 'vert-carousel',
-            controls  : 'vert-controls',
-            skipnext  : 'vert-next',
-            skipprev  : 'vert-prev',
-            items     : 'dd',
-            vertical  : true,
-            vertHeight: 800,
-            vertWidth : "100%"
+        var carousel = new carousel({
+            box       : 'carouselbox',
+            slider    : 'carousel',
+            controls  : 'catscontrols',
+            skipnext  : 'next',
+            skipprev  : 'prev',
+            items     : 'dd'
         });
       }
     </script>

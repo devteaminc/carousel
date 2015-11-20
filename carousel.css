@@ -9,6 +9,7 @@ body{
   position: relative;
   margin: 0 auto;
   overflow: hidden;
+  height: 200px;
 }
 .vert-box{
   margin: 0 auto 40px;
@@ -174,45 +175,65 @@ p{
 }
 
 .buttons a {
-  width: 40px;
-  height: 110px;
   position: absolute;
-  margin-top: 3.5vw;
+  top: 40%;
   z-index: 3;
   display: block;
-  text-indent: -9000px;
-  background: url("http://www.responsive.servup12.co.uk/images/slidercontrols.png") no-repeat;
+  /*background: url("http://www.responsive.servup12.co.uk/images/slidercontrols.png") no-repeat;*/
   cursor: pointer;
-  opacity: 0.7;
+  background: #fff;
+  border-radius: 7px;
+  opacity: 0.6;
+  height: 50px;
+  width: 30px;
+  border-radius: 50px 0px 0px 50px;
+  transition: 250ms ease-in-out;
+}
+
+.buttons a:before{
+  content: "";
+  position: absolute;
+  border-left: 12px solid #333;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  margin: 15px -2px;
+}
+
+.buttons a.prev:before{
+  border-right: 12px solid #333;
+  border-left: none;
+  margin: 15px -10px;
+}
+
+.buttons a:hover {
+  opacity: 0.8;
 }
 .buttons a.prev{
-  left: 0;
-  background-position: 0 -12px;
+  left: 11px;
+  border-radius: 0px 50px 50px 0px;
   z-index: 10;
 }
 
 .buttons a.next{
-  right: 0;
-  background-position: -107px -12px;
+  right: 11px;
   z-index: 10;
 }
 
 #vert-controls a.rewind-vert {
-  margin-top: -10px;
-  transform: rotate(270deg);
+  top: 0;
+  transform: rotate(90deg);
   left: 50%;
   margin-left: -20px;
   z-index: 10;
-  background-position: -107px -11px;
 }
 
 #vert-controls a.forward-vert {
   transform: rotate(90deg);
   left: 50%;
   margin-left: -20px;
-  bottom: -32px;
+  bottom: 0px;
   z-index: 10;
-  background-position: -114px -11px;
+  top: inherit;
 }
 
 .github-corner:hover .octo-arm{
