@@ -36,14 +36,16 @@ body{
 
   #vert-controls a.vert-prev, #vert-controls a.vert-next {
     left: 0;
-    background-position: 0 -12px;
     z-index: 10;
   }
 
   #vert-controls a.vert-next {
     right: 0;
     left: inherit;
-    background-position: -107px -12px;
+  }
+
+  .buttons a{
+    top: 25%;
   }
 }
 
@@ -209,13 +211,13 @@ p{
   opacity: 0.8;
 }
 .buttons a.prev{
-  left: 11px;
+  left: 0;
   border-radius: 0px 50px 50px 0px;
   z-index: 10;
 }
 
 .buttons a.next{
-  right: 11px;
+  right: 0;
   z-index: 10;
 }
 
