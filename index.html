@@ -77,9 +77,10 @@
     </div>
     <script src="carousel.js"></script>
     <script>
-      if ( $('carousel') ) {
-        // create new carousel based on prototype class
-        var carousel = new carousel({
+      // if there's more than four slides
+      if ( $('carousel').childElements().length > 4 ) {
+      // create a new carousel 
+        var carousel  = new carousel({
             box       : 'carouselbox',
             slider    : 'carousel',
             controls  : 'catscontrols',
