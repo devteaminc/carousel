@@ -26,6 +26,7 @@ var carousel = Class.create({
           vertical        : false,
           vertWidth       : 300,
           vertHeight      : 800,
+          vertBreak       : 960,
           autoplay        : false,
           autoDelay       : 3
         };
@@ -80,9 +81,9 @@ var carousel = Class.create({
         this.animateAuto();
         // Switch Vertical Carousel to Horizontal below 960px
         // if Desktop width maintain vertical style 
-        if(width >= 960 && this.options.vertical === true){this.internal.vertical = true;} 
+        if(width >= this.options.vertBreak && this.options.vertical === true){this.internal.vertical = true;} 
         // if Mobile width switch style
-        else if(width < 960 && this.options.vertical === true){this.internal.vertical = false; }
+        else if(width < this.options.vertBreak && this.options.vertical === true){this.internal.vertical = false; }
         // If Vertical is set, change container style
         if(this.internal.vertical === true){
            this.internal.slider.setStyle({'width': '100%'});

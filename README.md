@@ -23,6 +23,7 @@ Demo: http://devteaminc.github.io/carousel/
 | vertical        | false             | If set to true this will change the layout to vertical               |
 | vertWidth       | 300               | Set the width of the vertical container                              |
 | vertHeight      | 800               | Set the height of the vertical container                             |
+| vertBreak       | 960               | Screen width at which vertical carousel becomes horizontal           |
 | autoplay        | false             | Set to true for autoplay                                             |
 | autoDelay       | 3                 | Delay between autoplay transitions                                   |
 
