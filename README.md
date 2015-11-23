@@ -30,9 +30,9 @@ Demo: http://devteaminc.github.io/carousel/
 ##Example implementation
 
 ```javascript
-// Invoke carousel if slider element exists
-if ( $('fcategories') ) {    
-    
+  // If there's more than four slides...
+  if ( $('carousel').childElements().length > 4 ) { 
+
   // Insert carouselbox div and wrap slider container within it 
   // Use this if you do not have access to the markup and need to add elements in using JS:
   $('fcategories').wrap('div', {'class': 'carouselbox active' });
